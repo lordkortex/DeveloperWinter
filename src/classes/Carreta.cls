@@ -10,10 +10,14 @@ public with sharing class Carreta {
     }
     
    
-    public void Carreta First(){
+    public void CarretaFirst(){
 
 
     }
 
+    public void CarretaSecond(){
+
+
+    }
 
 }
