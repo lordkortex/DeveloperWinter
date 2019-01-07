@@ -21,7 +21,7 @@ public with sharing class Carreta {
     }
 
 
-    public void CarretaThirdPlus(){
+    public void CarretaThird(){
 
 
     }
