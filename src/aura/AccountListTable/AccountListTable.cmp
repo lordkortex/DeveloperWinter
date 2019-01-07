@@ -1,0 +1,107 @@
+<aura:component controller="AccountsController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+        <aura:attribute name="accounts" type="List" />
+        <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+        <!-- Use a data table from the Lightning Design System: https://www.lightningdesignsystem.com/components/data-tables/ -->
+        <table class="slds-table slds-table_bordered slds-table_striped slds-table_cell-buffer slds-table_fixed-layout">
+          <thead>
+            <tr class="slds-text-heading_label">
+              <th scope="col"><div class="slds-truncate" title="Codigo Postal">Codigo Postal</div></th>
+              <th scope="col"><div class="slds-truncate" title="Producto">Producto</div></th>
+              <th scope="col"><div class="slds-truncate" title="Precio por codigo postal">Precio por codigo postal</div></th>
+              <th scope="col"><div class="slds-truncate" title="Litros">Litros</div></th>
+              <!--<th scope="col"><div class="slds-truncate" title="Ticker Symbol">Ticker Symbol</div></th>
+              <th scope="col"><div class="slds-truncate" title="Phone">Phone</div></th>
+              <th scope="col"><div class="slds-truncate" title="Delete">Delete</div></th>
+			-->
+              <th scope="col"><div class="slds-truncate" title="Delete">Edit</div></th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Use the Apex model and controller to fetch server side data -->
+            <!--<aura:iteration items="{!v.accounts}" var="account">-->
+                <tr>
+                    <!--<th scope="row"><div class="slds-truncate" title="{!account.Id}">{!account.Id}</div></th>
+                    <td><div class="slds-truncate" title="{!account.Name}">{!account.Name}</div></td>
+                    <td><div class="slds-truncate" title="{!account.Type}">{!account.Type}</div></td>-->
+                    <td><div class="slds-truncate" title="Código Postal">PORT AIR FRANCE  REMOTO 1 6001,3001,1001,1002</div></td>
+                    <td><div class="slds-truncate" title="Código Postal">6001,3001,1001,1002</div></td>
+                    <td><div class="slds-truncate" title="Producto">Gasoleo A</div></td>
+                    <td><div class="slds-truncate" title="Litros Por Código Postal">2,000</div></td>
+                    <td><div class="slds-truncate" title="Precio Por Litro">$ 1,000</div></td>
+  					<td>
+                        <form class="account-form" onsubmit="{!c.deleteAccount}">
+                          <!--<input type="hidden" value="{!account.Name}" class="account-name" />
+                          <input type="hidden" value="{!account.Id}" class="account-id" />
+                           Use a Lightning Base Component To display an icon next to the label -->
+                          <lightning:button
+                            label="Edit"
+                            iconName="utility:edit"
+                            iconPosition="left"
+                            variant="brand"
+                            type="submit"
+                          />
+                        </form>
+                    </td>
+                </tr>
+            <!--</aura:iteration>-->
+              
+              
+              
+               <tr>
+                    <!--<th scope="row"><div class="slds-truncate" title="{!account.Id}">{!account.Id}</div></th>
+                    <td><div class="slds-truncate" title="{!account.Name}">{!account.Name}</div></td>
+                    <td><div class="slds-truncate" title="{!account.Type}">{!account.Type}</div></td>-->
+                    <td><div class="slds-truncate" title="Código Postal">LOCAL MERGE 2 4001,1001</div></td>
+                    <td><div class="slds-truncate" title="Producto">Gasoleo B</div></td>
+                    <td><div class="slds-truncate" title="Litros Por Código Postal">3,000</div></td>
+                    <td><div class="slds-truncate" title="Precio Por Litro">$ 1,500</div></td>
+  					<td>
+                        <form class="account-form" onsubmit="{!c.deleteAccount}">
+                          <!--<input type="hidden" value="{!account.Name}" class="account-name" />
+                          <input type="hidden" value="{!account.Id}" class="account-id" />
+                           Use a Lightning Base Component To display an icon next to the label -->
+                          <lightning:button
+                            label="Edit"
+                            iconName="utility:edit"
+                            iconPosition="left"
+                            variant="brand"
+                            type="submit"
+                          />
+                        </form>
+                    </td>
+                </tr>
+            <!--</aura:iteration>-->
+
+               <tr>
+                    <!--<th scope="row"><div class="slds-truncate" title="{!account.Id}">{!account.Id}</div></th>
+                    <td><div class="slds-truncate" title="{!account.Name}">{!account.Name}</div></td>
+                    <td><div class="slds-truncate" title="{!account.Type}">{!account.Type}</div></td>-->
+                    <td><div class="slds-truncate" title="Código Postal">LOCAL 3 1001,1002</div></td>
+                    <td><div class="slds-truncate" title="Código Postal">1001,1002</div></td>
+                    <td><div class="slds-truncate" title="Producto">Gasoleo C</div></td>
+                    <td><div class="slds-truncate" title="Litros Por Código Postal">1,000</div></td>
+                    <td><div class="slds-truncate" title="Precio Por Litro">$ 500</div></td>
+  					<td>
+                        <form class="account-form" onsubmit="{!c.deleteAccount}">
+                          <!--<input type="hidden" value="{!account.Name}" class="account-name" />
+                          <input type="hidden" value="{!account.Id}" class="account-id" />
+                           Use a Lightning Base Component To display an icon next to the label -->
+                          <lightning:button
+                            label="Edit"
+                            iconName="utility:edit"
+                            iconPosition="left"
+                            variant="brand"
+                            type="submit"
+                          />
+                        </form>
+                    </td>
+                </tr>
+            <!--</aura:iteration>-->
+              
+              
+              
+              
+              
+          </tbody>
+        </table>
+      </aura:component>

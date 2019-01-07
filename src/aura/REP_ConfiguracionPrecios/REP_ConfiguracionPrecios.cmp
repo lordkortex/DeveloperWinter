@@ -1,0 +1,197 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+   
+     <!-- attributes -->
+    <aura:attribute name="gridData" type="Object"/>
+    <aura:attribute name="gridColumns" type="List"/>
+
+    <aura:attribute name="rawData" type="Object" access="PRIVATE" />
+    <aura:attribute name="activeFilter" type="string" default="all" access="PRIVATE" />
+
+    
+    <aura:attribute name="optionsFiltroCodigoPostal" type="List" default="[]"/>
+    <aura:attribute name="optionsTipoGasoleo" type="List" default="[]"/>
+    
+	<aura:attribute name="optionsCP" type="List" default="[]"/>
+	<aura:attribute name="valuesCP" type="List" default="[]"/>
+   	<aura:attribute name="requiredOptionsCP" type="List" default="[]"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.init}"/>
+    
+   <lightning:tile label="Litros día" class="slds-tile_board">
+                        <aura:set attribute="media">
+                            <lightning:icon iconName="standard:groups"/>
+                        </aura:set>
+                        <p class="slds-text-heading_medium">Indica el número de litros que quieres apartar de tus camiones esta semana, junto con los precios,promociones y códigos postales a los que aplica </p>
+                        <p class="slds-truncate" title="Company One">Margen negociado sobre precio diario:  25 %</p>
+                    	<br/>
+   </lightning:tile>
+    
+   
+    <lightning:accordion aura:id="accordion" activeSectionName="A">
+        <lightning:accordionSection name="A" label="Martes 17 de Abril">
+            <aura:set attribute="actions">
+               <!-- <lightning:buttonMenu aura:id="menu" alternativeText="Show menu" menuAlignment="right" iconSize="x-small">
+                    <lightning:menuItem value="New" label="Menu Item One" />
+                    <lightning:menuItem value="Edit" label="Menu Item Two" />
+                </lightning:buttonMenu>-->
+            </aura:set>
+            <aura:set attribute="body">
+                  <div class="c-container">
+                        <lightning:layout>
+                            <lightning:layoutItem flexibility="auto" padding="around-small">
+                                <div class="custom-box">
+                                 <lightning:card>
+                                    <aura:set attribute="title">
+                                        <lightning:icon iconName="utility:connected_apps" size="small"/>
+                                        Gasoleo A
+                                    </aura:set>
+                                    <div class="slds-align_absolute-center" style="height: 5rem;"><ui:outputText  value=" $ 0.72 / Litro"/></div>
+                                    
+                                </lightning:card>
+                                </div>
+                            </lightning:layoutItem>
+                            <lightning:layoutItem flexibility="auto" padding="around-small">
+                                <div class="custom-box">
+                                 <lightning:card>
+                                    <aura:set attribute="title">
+                                        <lightning:icon iconName="utility:connected_apps" size="small"/>
+                                        Gasoleo A
+                                    </aura:set>
+                                    <div class="slds-align_absolute-center" style="height: 5rem;"><ui:outputText  value=" $ 0.72 / Litro"/></div>
+                                </lightning:card>
+                                </div>
+                            </lightning:layoutItem>
+                            <lightning:layoutItem flexibility="auto" padding="around-small">
+                                <div class="custom-box">
+                                 <lightning:card>
+                                    <aura:set attribute="title">
+                                        <lightning:icon iconName="utility:connected_apps" size="small"/>
+                                        Gasoleo A
+                                    </aura:set>
+                                    <div class="slds-align_absolute-center" style="height: 5rem;"><ui:outputText  value=" $ 0.72 / Litro"/></div>
+                                    
+                                </lightning:card>
+                                </div>
+                            </lightning:layoutItem>
+                        </lightning:layout>
+                    </div>
+                    <div>
+                        <lightning:button variant="brand" label="Añadir Litros" title="Añadir Litros" onclick="{! c.openModel }"/>
+                        <lightning:button variant="brand" label="Publicar" title="Publicar" onclick="{! c.openModel }"/>                   
+                        <lightning:button variant="destructive" label="Eliminar" title="Publicar" onclick="{! c.openModel }"/>                   
+                    </div>
+                	<br/>
+					<c:AccountListTable></c:AccountListTable>
+            </aura:set>
+        </lightning:accordionSection>
+        <lightning:accordionSection name="B" label="Miercoles 18 de Abril">
+                <p>This is the content area for section B.</p>
+                <p>.</p>
+                <p>.</p>
+                <p>.</p>
+                <p>The section height expands to fit your content.</p>
+        </lightning:accordionSection>
+        <lightning:accordionSection name="C" label="Jueves 19 de Abril">
+                <p>This is the content area for section C.</p>
+                <p>.</p>
+                <p>.</p>
+                <p>.</p>
+                <p>The section height expands to fit your content.</p>
+        </lightning:accordionSection>
+    </lightning:accordion>
+    
+    
+    
+    
+   
+    
+    <!-- -->
+    
+    <aura:attribute name="isOpen" type="boolean" default="false"/>
+    
+    
+    <aura:if isTrue="{!v.isOpen}">
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <header class="slds-modal__header">
+                        <lightning:buttonIcon iconName="utility:close"
+                                              onclick="{! c.closeModel }"
+                                              alternativeText="close"
+                                              variant="bare-inverse"
+                                              class="slds-modal__close"/>
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Añadir Litros</h2>
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Lunes 16 de Abril de 2018</h2>
+                    </header>
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                        
+                        <h3 class="slds-section-title--divider">Tipo de gasoleo</h3>
+                        <div class="slds-form--stacked slds-p-around--medium slds-m-bottom--x-small">
+                          <div class="slds-form-element">
+                            <div class="slds-form-element__control">
+								<lightning:combobox name="Tipo de gasoleo" label="Indica el tipo de gasoleo para el cual quieres añadir litros" placeholder="Select an Option" options="{! v.optionsTipoGasoleo }" onchange="{! c.handleChange }"/>
+                            </div>
+                          </div>
+                        </div>
+                        
+                        <h3 class="slds-section-title--divider">Código Postal</h3>
+                        <div class="slds-form--stacked slds-p-around--medium slds-m-bottom--x-small">
+                          <div class="slds-form-element">
+                            <div class="slds-form-element__control">
+							<lightning:combobox name="Filtrar Codigos Postales" label="Filtra los codigos postales" placeholder="Select an Option" options="{! v.optionsFiltroCodigoPostal}" onchange="{! c.handleChange }"/>
+                            <lightning:dualListbox name="languages"  
+                                                   label= "Indica los CPs para los que quieres añadir litros" 
+                                                   value = "{!v.valuesCP}"
+                                                   sourceLabel="Disponibles" 
+                                                   selectedLabel="Seleccionados" 
+                                                   fieldLevelHelp="Los codigos postales disponibles dependen del producto o gasoleo previamente seleccionado." 
+                                                   options="{!v.optionsCP}" 
+                                                   requiredOptions="{!v.requiredOptionsCP}" 
+                                                   onchange="{! c.handleChange }"/>
+                            </div>
+                          </div>
+                        </div>
+                        
+                       <h3 class="slds-section-title--divider">Precio</h3>
+					   <div class="slds-form--stacked slds-p-around--medium slds-m-bottom--x-small">
+                          <div class="slds-form-element">
+                            <!--<label class="slds-form-element__label" for="inputNameSample1">Name Suffix</label>-->
+                            <div class="slds-form-element__control">
+								<lightning:input type="number" name="inputPrecio" label="Indica el precio para la configuracion de Productos y Codigos Postales seleccionada" value="0" formatter="currency" step="0"/>
+                              </div>
+                          </div>
+                        </div>
+                        
+                        <h3 class="slds-section-title--divider">Litros</h3>
+                       <div class="slds-form--stacked slds-p-around--medium slds-m-bottom--x-small">
+                          <div class="slds-form-element">
+                            <!--<label class="slds-form-element__label" for="inputNameSample1">Name Suffix</label>-->
+                            <div class="slds-form-element__control">
+								<lightning:input type="number" name="input1" label="Indica cuantos litros quieres publicar para este día" />
+                            </div>
+                          </div>
+                        </div>
+                       
+                        
+                    </div>
+                    <!--###### MODAL BOX FOOTER Part Start ######-->
+                    <footer class="slds-modal__footer">
+                        <lightning:button variant="neutral" 
+                                          label="Cancelar"
+                                          title="Cancelar"
+                                          onclick="{! c.closeModel }"/>
+                        <lightning:button variant="brand" 
+                                          label="Añadir Litros"
+                                          title="Añadir Litros"
+                                          onclick="{! c.likenClose }"/>
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+            <!--###### MODAL BOX Part END Here ######-->
+            
+        </aura:if>
+    
+
+    
+    
+</aura:component>
